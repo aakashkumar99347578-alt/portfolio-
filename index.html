@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aakash Kumar | AI/ML & Data Analytics Developer | 3D Portfolio</title>
+  <meta name="description" content="Official 3D interactive portfolio of Aakash Kumar - B.Tech CSE, AI/ML & Data Analytics enthusiast, DevHack 2026 Winner, and Community Leader.">
+  <meta name="keywords" content="Aakash Kumar, Portfolio, AI/ML, Data Analytics, Python, DevHack, ChainScope, 3D WebGL">
+  <meta name="author" content="Aakash Kumar">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aakash Kumar | 3D Motion Portfolio">
+  <meta property="og:description" content="Explore projects, hackathon achievements, and interactive 3D simulations.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Three.js for 3D Motion -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body data-theme="cyber-dark">
+
+  <!-- Custom Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
+
+  <!-- 3D Canvas Background -->
+  <div id="webgl-container"></div>
+  <div class="cyber-grid-overlay"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Master App Window Shell (Matching Reference Mockup) -->
+  <div class="portfolio-device-frame">
+    <!-- Header / Navigation -->
+    <header class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#hero" class="nav-brand-logo" id="logo-btn">
+          <span class="logo-text">LOG<span class="logo-orange">O</span></span>
+        </a>
+
+        <nav class="nav-links" id="nav-menu">
+          <a href="#hero" class="nav-link active">Home</a>
+          <a href="#skills" class="nav-link">Services</a>
+          <a href="#about" class="nav-link">About me</a>
+          <a href="#projects" class="nav-link">Portfolio</a>
+          <a href="#contact" class="nav-link">Contact me</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#contact" class="btn-hire-top">Hire Me</a>
+
+          <!-- Audio Synth Toggle -->
+          <button id="sound-toggle" class="control-btn" title="Toggle Spatial Audio Synth" aria-label="Audio switch">
+            <svg class="icon sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            <svg class="icon sound-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+
+          <!-- 3D Shape Mode Switcher -->
+          <button id="geometry-toggle" class="control-btn" title="Change 3D Universe Shape" aria-label="3D Shape switcher">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <span class="shape-badge">3D</span>
+          </button>
+
+          <!-- Mobile Menu Toggle -->
+          <button id="menu-btn" class="hamburger-btn" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO SECTION (Black & Luxury Orange with 3D Motion) -->
+      <section class="hero-section" id="hero">
+        <!-- Left Hero Column -->
+        <div class="hero-left-column">
+          <p class="hero-greeting" data-aos="fade-down">Hi I am</p>
+          <h2 class="hero-person-name" data-aos="fade-up">Aakash Kumar</h2>
+          <h1 class="hero-role-title" data-aos="fade-up" data-aos-delay="100">AI/ML Engineer</h1>
+
+          <div class="hero-typewriter-row" data-aos="fade-up" data-aos-delay="150">
+            <span class="role-prefix">&gt; Focus:</span>
+            <span class="typed-text" id="typewriter"></span>
+            <span class="cursor-caret">&nbsp;</span>
+          </div>
+
+          <!-- Social Media Icons Row -->
+          <div class="hero-socials" data-aos="fade-up" data-aos-delay="200">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon-circle" title="Instagram" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/aakash-kumar-0a457223b/" target="_blank" rel="noopener noreferrer" class="social-icon-circle" title="LinkedIn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="https://github.com/aakashkumar99347578-alt" target="_blank" rel="noopener noreferrer" class="social-icon-circle" title="GitHub" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="#projects" class="social-icon-circle" title="Portfolio Projects" aria-label="Projects">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="hero-btn-row" data-aos="fade-up" data-aos-delay="250">
+            <a href="#contact" class="btn-hero-hire">Hire Me</a>
+            <button id="quick-resume-btn" class="btn-hero-cv" type="button">Download CV</button>
+          </div>
+
+          <!-- 3-Column Floating Stats Card (Matching Reference Layout) -->
+          <div class="hero-stats-card tilt-element" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-col">
+              <div class="stat-highlight">
+                <span class="stat-num" data-count="1150">0</span><span class="stat-plus">+</span>
+              </div>
+              <span class="stat-label">DevHack Competitors</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-col">
+              <div class="stat-highlight">
+                <span class="stat-num" data-count="20">0</span><span class="stat-plus">+</span>
+              </div>
+              <span class="stat-label">Project done</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-col">
+              <div class="stat-highlight">
+                <span class="stat-num" data-count="83">0</span><span class="stat-pct">.35%</span>
+              </div>
+              <span class="stat-label">JEE Main %ile</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+        </div>
+
+        <!-- Right Hero Column: 3D Motion Portrait Stage -->
+        <div class="hero-right-column" data-aos="fade-left">
+          <div class="hero-portrait-stage tilt-element" id="hero-3d-portrait">
+            <!-- Large Matte Charcoal Circle with Orange Halo Rim Light -->
+            <div class="portrait-halo-circle">
+              <!-- Actual Cutout Portrait of Aakash Kumar -->
+              <img src="assets/portrait.jpg?v=2" alt="Aakash Kumar - AI/ML & Data Engineer" class="portrait-photo" id="hero-portrait-img">
+            </div>
+
+            <!-- 3D Orbital Revolving Ring -->
+            <div class="orbital-ring-3d"></div>
+            <div class="orbital-ring-3d ring-outer"></div>
+
+            <!-- 3D Floating Tech Badges -->
+            <div class="floating-3d-badge badge-top">
+              <span class="badge-icon">🥇</span>
+              <div class="badge-text">
+                <strong>DevHack 2026 Winner</strong>
+                <small>Best AI Project</small>
+              </div>
+            </div>
+
+            <div class="floating-3d-badge badge-mid">
+              <span class="badge-icon">⚡</span>
+              <div class="badge-text">
+                <strong>ChainScope Engine</strong>
+                <small>Neo4j 4-Hop Tracing</small>
+              </div>
+            </div>
+
+            <div class="floating-3d-badge badge-bot">
+              <span class="badge-icon">🏛️</span>
+              <div class="badge-text">
+                <strong>Artisan Platform</strong>
+                <small>Fair-Trade Craft Provenance</small>
+              </div>
+            </div>
+
+            <div class="card-glare"></div>
+          </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <a href="#about" class="scroll-down-mouse" aria-label="Scroll to about section">
+          <div class="mouse-wheel"></div>
+          <span>EXPLORE</span>
+        </a>
+      </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about-section" id="about">
+      <div class="section-container">
+        <div class="section-badge" data-aos="fade-up">01 // PROFILE MATRIX</div>
+        <h2 class="section-title" data-aos="fade-up">Driven by Data, <span class="gradient-text">Powered by Intelligence</span></h2>
+        
+        <div class="about-grid">
+          <div class="about-bio-card tilt-element" data-aos="fade-right">
+            <div class="cyber-corner tr"></div>
+            <div class="cyber-corner bl"></div>
+            <h3>Who I Am</h3>
+            <p>
+              I am an energetic <strong>B.Tech Computer Science student</strong> in my 2nd year at 
+              <strong>Swami Vivekanand Institute of Engineering & Technology (SVIET), Punjab</strong>.
+              My work centers around turning raw data into actionable intelligence through 
+              <strong>Python, Object-Oriented Programming, and Machine Learning algorithms</strong>.
+            </p>
+            <p>
+              Whether leading hackathon teams through high-pressure sprints or mentoring juniors in community coding workshops,
+              I thrive on taking abstract problems — such as multi-hop blockchain transaction fraud — and engineering concrete,
+              evidence-based systems with graph databases and machine learning.
+            </p>
+
+            <div class="personal-highlights">
+              <div class="highlight-item">
+                <span class="hl-icon">⚡</span>
+                <div>
+                  <strong>Team Leader - NextGen Builders</strong>
+                  <span>Spearheaded team to 1st place AI Project at DevHack 2026 among 1,150+ participants</span>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">🎓</span>
+                <div>
+                  <strong>Academic Track</strong>
+                  <span>Class XII (82%) • Class X (84%) • JEE Main 83.35 Percentile</span>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">🌐</span>
+                <div>
+                  <strong>Tech Community Leader</strong>
+                  <span>Mentor at CODE CRUSADE 0.5 (The Uniques Community), GDSC member, and hackathon organizer</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <div class="about-telemetry tilt-element" data-aos="fade-left">
+            <div class="cyber-corner tl"></div>
+            <div class="cyber-corner br"></div>
+            <h3>Core Engineering Focus</h3>
+            <div class="radar-capabilities">
+              <div class="capability-row">
+                <div class="cap-header">
+                  <span>Data Science & Analytics (NumPy, Pandas)</span>
+                  <span>92%</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width: 92%;"></div></div>
+              </div>
+
+              <div class="capability-row">
+                <div class="cap-header">
+                  <span>Python OOP & Logic Building</span>
+                  <span>90%</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width: 90%;"></div></div>
+              </div>
+
+              <div class="capability-row">
+                <div class="cap-header">
+                  <span>Graph Tracing & Neo4j Multi-Hop</span>
+                  <span>85%</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width: 85%;"></div></div>
+              </div>
+
+              <div class="capability-row">
+                <div class="cap-header">
+                  <span>Machine Learning (Random Forest, Scikit-Learn)</span>
+                  <span>82%</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width: 82%;"></div></div>
+              </div>
+
+              <div class="capability-row">
+                <div class="cap-header">
+                  <span>Git, Cloud & API Integration (AWS, Blockchain APIs)</span>
+                  <span>80%</span>
+                </div>
+                <div class="progress-bar"><div class="fill" style="width: 80%;"></div></div>
+              </div>
+            </div>
+
+            <!-- Education Snapshot Box -->
+            <div class="education-box">
+              <div class="edu-badge">ACADEMIC BACKGROUND</div>
+              <h4>B.Tech in Computer Science & Engineering</h4>
+              <p class="institution">Swami Vivekanand Institute of Engineering & Technology (SVIET)</p>
+              <div class="edu-meta">
+                <span>📍 Punjab, India</span>
+                <span>📅 2025 – Present</span>
+                <span class="tag-live">2nd Year Active</span>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS MATRIX SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="section-container">
+        <div class="section-badge" data-aos="fade-up">02 // ARSENAL</div>
+        <h2 class="section-title" data-aos="fade-up">Technical <span class="gradient-text">Stack & Superpowers</span></h2>
+
+        <!-- Interactive Filter Tabs -->
+        <div class="skills-filter-nav" data-aos="fade-up">
+          <button class="filter-tab active" data-filter="all">All Disciplines</button>
+          <button class="filter-tab" data-filter="programming">Languages</button>
+          <button class="filter-tab" data-filter="data">Data & ML</button>
+          <button class="filter-tab" data-filter="tools">Databases & Cloud</button>
+          <button class="filter-tab" data-filter="leadership">Leadership & Soft Skills</button>
+        </div>
+
+        <div class="skills-grid" id="skills-container">
+          <!-- Skill Card 1 -->
+          <div class="skill-card tilt-element" data-category="programming" data-aos="zoom-in">
+            <div class="skill-icon-wrapper python-glow">
+              <span class="skill-symbol">🐍</span>
+            </div>
+            <h3>Python 3</h3>
+            <p>Object-Oriented Architecture, Data Manipulation, Logic Building, Algorithm Design.</p>
+            <div class="skill-tags">
+              <span>OOP</span>
+              <span>Automation</span>
+              <span>Decorators</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="skill-card tilt-element" data-category="data" data-aos="zoom-in" data-aos-delay="50">
+            <div class="skill-icon-wrapper numpy-glow">
+              <span class="skill-symbol">🔢</span>
+            </div>
+            <h3>NumPy & Pandas</h3>
+            <p>High-dimensional array manipulation, series wrangling, data cleaning, matrix transformations.</p>
+            <div class="skill-tags">
+              <span>Dataframe</span>
+              <span>Vectorization</span>
+              <span>Aggregations</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="skill-card tilt-element" data-category="data" data-aos="zoom-in" data-aos-delay="100">
+            <div class="skill-icon-wrapper ml-glow">
+              <span class="skill-symbol">🤖</span>
+            </div>
+            <h3>AI & Machine Learning</h3>
+            <p>Supervised learning models, Random Forest behavioral classification, pattern identification.</p>
+            <div class="skill-tags">
+              <span>Random Forest</span>
+              <span>Scikit-Learn</span>
+              <span>Risk Scoring</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 4 -->
+          <div class="skill-card tilt-element" data-category="data" data-aos="zoom-in" data-aos-delay="150">
+            <div class="skill-icon-wrapper viz-glow">
+              <span class="skill-symbol">📊</span>
+            </div>
+            <h3>Matplotlib & Visualization</h3>
+            <p>Exploratory data analysis plots, heatmaps, distribution curves, visual report generation.</p>
+            <div class="skill-tags">
+              <span>EDA</span>
+              <span>Subplots</span>
+              <span>Charts</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 5 -->
+          <div class="skill-card tilt-element" data-category="tools" data-aos="zoom-in" data-aos-delay="200">
+            <div class="skill-icon-wrapper graph-glow">
+              <span class="skill-symbol">🕸️</span>
+            </div>
+            <h3>Neo4j & Graph Tracing</h3>
+            <p>Multi-hop graph exploration, transactional link visualization, Cypher query design.</p>
+            <div class="skill-tags">
+              <span>Graph DB</span>
+              <span>Multi-Hop</span>
+              <span>Cypher</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 6 -->
+          <div class="skill-card tilt-element" data-category="programming" data-aos="zoom-in" data-aos-delay="250">
+            <div class="skill-icon-wrapper c-glow">
+              <span class="skill-symbol">⚙️</span>
+            </div>
+            <h3>C Programming</h3>
+            <p>Pointers, memory management, low-level data structures, and computer organization foundations.</p>
+            <div class="skill-tags">
+              <span>Pointers</span>
+              <span>Memory</span>
+              <span>Data Structures</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 7 -->
+          <div class="skill-card tilt-element" data-category="tools" data-aos="zoom-in" data-aos-delay="300">
+            <div class="skill-icon-wrapper git-glow">
+              <span class="skill-symbol">🐙</span>
+            </div>
+            <h3>Git & GitHub Collaboration</h3>
+            <p>Version control workflows, branching strategy, open source contribution, and CI/CD basics.</p>
+            <div class="skill-tags">
+              <span>Version Control</span>
+              <span>Repo Architecture</span>
+              <span>CLI</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 8 -->
+          <div class="skill-card tilt-element" data-category="tools" data-aos="zoom-in" data-aos-delay="350">
+            <div class="skill-icon-wrapper aws-glow">
+              <span class="skill-symbol">☁️</span>
+            </div>
+            <h3>AWS & Cloud Basics</h3>
+            <p>Cloud resource provisioning, S3 bucket storage concepts, compute deployment fundamentals.</p>
+            <div class="skill-tags">
+              <span>Cloud Storage</span>
+              <span>APIs</span>
+              <span>Compute</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Skill Card 9 -->
+          <div class="skill-card tilt-element" data-category="leadership" data-aos="zoom-in" data-aos-delay="400">
+            <div class="skill-icon-wrapper lead-glow">
+              <span class="skill-symbol">👑</span>
+            </div>
+            <h3>Team Leadership & Mentorship</h3>
+            <p>Led hackathon teams to podium finishes, mentored 7-day coding workshops, sprint planning.</p>
+            <div class="skill-tags">
+              <span>Hackathon Captain</span>
+              <span>Workshop Mentor</span>
+              <span>Public Speaking</span>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+      <div class="section-container">
+        <div class="section-badge" data-aos="fade-up">03 // FEATURED WORK</div>
+        <h2 class="section-title" data-aos="fade-up">Engineered for <span class="gradient-text">Real-World Impact</span></h2>
+        
+        <div class="projects-grid">
+          <!-- Featured Project 1: ChainScope -->
+          <div class="project-card featured-project tilt-element" data-aos="fade-up">
+            <div class="project-header">
+              <div class="project-label">
+                <span class="award-tag">🏆 DEVHACK 2026 BEST AI PROJECT</span>
+              </div>
+              <div class="project-actions">
+                <button class="action-btn-pill view-code-btn" data-code="chainscope" title="View Source Code">
+                  <span>&lt;/&gt; View Code</span>
+                </button>
+                <button class="action-btn-pill highlight view-details-btn" data-project="chainscope" title="View Architecture Diagram">
+                  <span>📐 Architecture</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">ChainScope</h3>
+              <div class="project-subtitle">Blockchain Transaction Risk Tracing & AI Anomaly Detection</div>
+              
+              <p class="project-description">
+                Engineered an evidence-based transaction tracing and multi-hop risk classification system.
+                Leverages Neo4j for deep graph link tracking (up to 4 hops), live Ethereum and Bitcoin validation 
+                via Etherscan and Blockstream APIs, and a Random Forest ensemble to detect dormant account revivals 
+                and rapid token laundering patterns.
+              </p>
+
+              <!-- Live Interactive 4-Hop Graph Simulator -->
+              <div class="interactive-preview-canvas" id="chainscope-preview">
+                <div class="canvas-header-row">
+                  <span class="canvas-badge">Interactive 4-Hop Risk Tracing Engine (Click nodes to inspect)</span>
+                  <span class="canvas-live-tag">LIVE_SIMULATOR</span>
+                </div>
+                <div class="node-graph-mockup">
+                  <div class="node origin active-node" data-node="origin">
+                    <span class="node-dot"></span>
+                    <div class="node-info">
+                      <strong>Target Wallet</strong>
+                      <small>0x71c...4e3a</small>
+                    </div>
+                  </div>
+                  <div class="hop-line line1"></div>
+                  <div class="node hop1" data-node="mixer">
+                    <span class="node-dot warning"></span>
+                    <div class="node-info">
+                      <strong>Hop 1: Mixer</strong>
+                      <small>Velocity 94.2%</small>
+                    </div>
+                  </div>
+                  <div class="hop-line line2"></div>
+                  <div class="node hop2" data-node="dormant">
+                    <span class="node-dot danger"></span>
+                    <div class="node-info">
+                      <strong>Hop 2: Revived</strong>
+                      <small>Dormant 420d</small>
+                    </div>
+                  </div>
+                  <div class="hop-line line3"></div>
+                  <div class="node hop3" data-node="exchange">
+                    <span class="node-dot clean"></span>
+                    <div class="node-info">
+                      <strong>Hop 3: Vault</strong>
+                      <small>CEX Pool</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Dynamic Node Inspection Panel -->
+                <div class="node-inspection-panel" id="node-inspector">
+                  <div class="inspect-row">
+                    <span class="inspect-label">Selected Node:</span>
+                    <span class="inspect-val" id="inspect-name">Target Wallet (Origin)</span>
+                    <span class="inspect-badge danger" id="inspect-risk">AI Risk Score: 0.94 [CRITICAL]</span>
+                  </div>
+                  <div class="inspect-desc" id="inspect-details">
+                    Ingested address linked with high velocity outbound tokens to unverified mixer contract.
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-pill">Neo4j Multi-Hop</span>
+                <span class="tech-pill">Random Forest AI</span>
+                <span class="tech-pill">Etherscan API</span>
+                <span class="tech-pill">Blockstream API</span>
+                <span class="tech-pill">Python 3</span>
+                <span class="tech-pill">Pandas Dataframes</span>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Featured Project 2: Artisan -->
+          <div class="project-card featured-project tilt-element" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-header">
+              <div class="project-label">
+                <span class="award-tag artisan-tag">🏛️ FAIR-TRADE CRAFT ECOSYSTEM // HERITAGE PROVENANCE</span>
+              </div>
+              <div class="project-actions">
+                <button class="action-btn-pill view-code-btn" data-code="artisan" title="View Source Code">
+                  <span>&lt;/&gt; View Code</span>
+                </button>
+                <button class="action-btn-pill highlight view-details-btn" data-project="artisan" title="View Architecture Diagram">
+                  <span>📐 Architecture</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">Artisan</h3>
+              <div class="project-subtitle">Direct Rural Craftsman Fair-Trade Marketplace & Authenticity Provenance</div>
+              
+              <p class="project-description">
+                Engineered a digital commerce and craft heritage ecosystem designed to empower rural and indigenous Indian artisans by eliminating exploitative middlemen.
+                Features an AI-driven fair pricing algorithm that computes dynamic selling benchmarks based on raw material costs, artisanal intricacy hours, and heritage indexes.
+                Includes verifiable digital provenance passports for Geographical Indication (GI) certified crafts like Madhubani art, Phulkari handlooms, and Terracotta pottery.
+              </p>
+
+              <!-- Live Interactive Artisan Fair-Trade & Provenance Explorer -->
+              <div class="interactive-preview-canvas artisan-preview-box" id="artisan-preview">
+                <div class="canvas-header-row">
+                  <span class="canvas-badge">Interactive Fair-Trade Valuation & Provenance Engine</span>
+                  <span class="canvas-live-tag">LIVE_CALCULATOR</span>
+                </div>
+
+                <!-- Craft Selection Chips -->
+                <div class="artisan-craft-selector">
+                  <button class="craft-chip active" data-craft="phulkari" type="button">
+                    <span>🧵</span> Phulkari Shawl (Punjab)
+                  </button>
+                  <button class="craft-chip" data-craft="madhubani" type="button">
+                    <span>🎨</span> Madhubani Painting (Bihar)
+                  </button>
+                  <button class="craft-chip" data-craft="terracotta" type="button">
+                    <span>🏺</span> Terracotta Vessel (Bengal)
+                  </button>
+                  <button class="craft-chip" data-craft="bluepottery" type="button">
+                    <span>✨</span> Blue Pottery (Jaipur)
+                  </button>
+                </div>
+
+                <!-- Dynamic Craft Valuation & Revenue Breakdown Matrix -->
+                <div class="artisan-valuation-card">
+                  <div class="craft-meta-row">
+                    <div class="craft-identity">
+                      <span class="craft-emoji" id="craft-icon">🧵</span>
+                      <div>
+                        <strong id="craft-title">Handspun Phulkari Silk Dupatta</strong>
+                        <small id="craft-origin">Origin: Patiala Craft Cluster, Punjab &bull; GI Tagged #PB-GI-202</small>
+                      </div>
+                    </div>
+                    <div class="craft-price-badge">
+                      <span class="price-label">Fair Consumer Price</span>
+                      <strong class="price-val" id="craft-price">₹4,800</strong>
+                    </div>
+                  </div>
+
+                  <!-- Fair Payout vs Middleman Comparison Bar -->
+                  <div class="payout-comparison-container">
+                    <div class="payout-header-flex">
+                      <span class="payout-title">Fair-Trade Escrow Distribution (vs Middleman Model)</span>
+                      <span class="payout-status-chip">78% GUARANTEED TO ARTISAN</span>
+                    </div>
+                    <div class="payout-split-bar">
+                      <div class="split-segment artisan-seg" id="seg-artisan" style="width: 78%;" title="Direct Artisan Payout (78%)">
+                        <span>Artisan 78%</span>
+                      </div>
+                      <div class="split-segment material-seg" id="seg-material" style="width: 14%;" title="Raw Materials & Dyes (14%)">
+                        <span>Materials 14%</span>
+                      </div>
+                      <div class="split-segment platform-seg" id="seg-platform" style="width: 8%;" title="Platform & Logistics (8%)">
+                        <span>8%</span>
+                      </div>
+                    </div>
+                    <div class="payout-legend">
+                      <div class="legend-item"><span class="legend-dot green"></span> <span id="artisan-payout-text">Direct Artisan Escrow: <strong>₹3,744</strong> <em class="middleman-comp">(vs ₹620 conventional broker)</em></span></div>
+                      <div class="legend-item"><span class="legend-dot blue"></span> <span id="material-text">Raw Materials: <strong>₹672</strong></span></div>
+                      <div class="legend-item"><span class="legend-dot purple"></span> <span id="platform-text">Logistics: <strong>₹384</strong></span></div>
+                    </div>
+                  </div>
+
+                  <!-- Provenance & Authenticity Verification Trigger -->
+                  <div class="artisan-provenance-row">
+                    <div class="provenance-cert" id="provenance-cert">
+                      <span class="cert-icon">🛡️</span>
+                      <div class="cert-text">
+                        <strong>GI Heritage Provenance Token: <span id="cert-id" class="glow-text">IN-GI-PB-7829</span></strong>
+                        <span id="cert-details">Verified Master Craftsman: Gurmeet Kaur &bull; 48 Working Hours</span>
+                      </div>
+                    </div>
+                    <button class="verify-btn" id="verify-artisan-btn" type="button">
+                      <span>✓ Verify Authenticity</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-pill">Python / FastAPI</span>
+                <span class="tech-pill">AI Fair-Value Pricing</span>
+                <span class="tech-pill">GI Heritage Token</span>
+                <span class="tech-pill">PostgreSQL / Supabase</span>
+                <span class="tech-pill">Direct Escrow Rails</span>
+                <span class="tech-pill">Multilingual Voice UI</span>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS & HACKATHONS PODIUM -->
+    <section class="section achievements-section" id="achievements">
+      <div class="section-container">
+        <div class="section-badge" data-aos="fade-up">04 // HONORS & RECOGNITION</div>
+        <h2 class="section-title" data-aos="fade-up">Hackathons & <span class="gradient-text">Award Podiums</span></h2>
+        
+        <div class="awards-grid">
+          <!-- Award 1 -->
+          <div class="award-card gold-tier tilt-element" data-aos="fade-up">
+            <div class="award-trophy">🥇</div>
+            <div class="award-meta">
+              <span class="award-event">DevHack 2026 // IIMT University, Meerut</span>
+              <span class="award-tag credential">Credential Ref: DEVHACK64</span>
+            </div>
+            <h3 class="award-title">Best AI Project Award</h3>
+            <p class="award-desc">
+              Served as <strong>Team Leader for NextGen Builders</strong>. Steered project ideation, distributed modules, 
+              coordinated multi-disciplinary workflows, and delivered the winning pitch against 
+              <strong>1,150+ registrations</strong>.
+            </p>
+            <div class="award-pill">Team Leader • 1,150+ Competitors</div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Award 2 -->
+          <div class="award-card cyan-tier tilt-element" data-aos="fade-up" data-aos-delay="100">
+            <div class="award-trophy">🤝</div>
+            <div class="award-meta">
+              <span class="award-event">HyperHack 1.0 // The Uniques Community</span>
+              <span class="award-tag">COMMUNITY AWARD</span>
+            </div>
+            <h3 class="award-title">Best Use of Teamwork Award</h3>
+            <p class="award-desc">
+              Celebrated for seamless agile collaboration, high-velocity code sync, and clear distribution 
+              of frontend, backend logic, and presentation delivery under 24-hour sprint conditions.
+            </p>
+            <div class="award-pill">Collaborative Synergy</div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Award 3 -->
+          <div class="award-card purple-tier tilt-element" data-aos="fade-up" data-aos-delay="150">
+            <div class="award-trophy">⚡</div>
+            <div class="award-meta">
+              <span class="award-event">HackPlus Hackathon // UEM Jaipur</span>
+              <span class="award-tag">COMPETITIVE SPRINT</span>
+            </div>
+            <h3 class="award-title">Top 30 Offline Finalist</h3>
+            <p class="award-desc">
+              Selected for the exclusive offline Grand Finale round in Jaipur from a fierce nationwide competition 
+              exceeding <strong>1,220+ registrations</strong>.
+            </p>
+            <div class="award-pill">Top 2.5% Nationwide</div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Award 4 -->
+          <div class="award-card blue-tier tilt-element" data-aos="fade-up" data-aos-delay="200">
+            <div class="award-trophy">🚀</div>
+            <div class="award-meta">
+              <span class="award-event">Punjab Mission Innovation</span>
+              <span class="award-tag">STATE LEVEL</span>
+            </div>
+            <h3 class="award-title">Top 10 Team Recognition</h3>
+            <p class="award-desc">
+              Recognized as one of the top 10 most impactful innovative teams across Punjab for applying tech solutions 
+              to regional infrastructure and digital challenges.
+            </p>
+            <div class="award-pill">Regional Excellence</div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Award 5 -->
+          <div class="award-card orange-tier tilt-element" data-aos="fade-up" data-aos-delay="250">
+            <div class="award-trophy">🇮🇳</div>
+            <div class="award-meta">
+              <span class="award-event">Smart India Hackathon (SIH) 2026</span>
+              <span class="award-tag">NATIONAL INITIATIVE</span>
+            </div>
+            <h3 class="award-title">Selected Team // Team RegenX</h3>
+            <p class="award-desc">
+              Successfully qualified through the rigorous institutional internal hackathon screening 
+              representing Team RegenX for government problem statements.
+            </p>
+            <div class="award-pill">SIH Institutional Qualifier</div>
+            <div class="card-glare"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP & TIMELINE -->
+    <section class="section timeline-section" id="timeline">
+      <div class="section-container">
+        <div class="section-badge" data-aos="fade-up">05 // COMMUNITY & LEADERSHIP</div>
+        <h2 class="section-title" data-aos="fade-up">Chronological <span class="gradient-text">Journey & Impact</span></h2>
+
+        <div class="timeline-container">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-element">
+              <span class="timeline-date">2026</span>
+              <h3>Team Leader & Architect // NextGen Builders</h3>
+              <p>
+                Led end-to-end ideation, team coordination, code delegation, and presentation delivery 
+                clinching the Best AI Project Award at DevHack 2026.
+              </p>
+              <div class="timeline-tags">
+                <span>Hackathon Leadership</span>
+                <span>System Architecture</span>
+                <span>Public Pitching</span>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-element">
+              <span class="timeline-date">2025 – 2026</span>
+              <h3>Coding Mentor // CODE CRUSADE 0.5</h3>
+              <p>
+                Mentored aspiring developers over a structured 7-day coding workshop organized through The Uniques Community. 
+                Guided participants through Python syntax, algorithmic fundamentals, and debugging techniques.
+              </p>
+              <div class="timeline-tags">
+                <span>7-Day Bootcamp</span>
+                <span>Mentorship</span>
+                <span>Code Reviews</span>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-element">
+              <span class="timeline-date">2025</span>
+              <h3>Volunteer // Bharat-Tech Xperience Hackathon</h3>
+              <p>
+                Contributed to participant coordination, live mentor assistance, logistics orchestration, 
+                and event experience ensuring smooth 24-hour execution.
+              </p>
+              <div class="timeline-tags">
+                <span>Event Ops</span>
+                <span>Developer Relations</span>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4 -->
+          <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content tilt-element">
+              <span class="timeline-date">2025 – Present</span>
+              <h3>B.Tech CSE & Campus Developer Community</h3>
+              <p>
+                Actively engaged at Swami Vivekanand Institute of Engineering & Technology (SVIET), 
+                GDSC community participation, and driving technical campus workshops.
+              </p>
+              <div class="timeline-tags">
+                <span>SVIET Punjab</span>
+                <span>Data Science</span>
+                <span>AI Engineering</span>
+              </div>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 3D TERMINAL SIMULATION -->
+    <section class="section terminal-section" id="terminal">
+      <div class="section-container">
+        <div class="section-badge" data-aos="fade-up">06 // LIVE INTERACTIVE CLI</div>
+        <h2 class="section-title" data-aos="fade-up">Interactive <span class="gradient-text">Python Shell</span></h2>
+        <p class="section-subtitle">Type commands like <code>help</code>, <code>skills</code>, <code>chainscope</code>, <code>awards</code>, <code>contact</code> or run Python simulations!</p>
+
+        <div class="terminal-window tilt-element" data-aos="zoom-in">
+          <div class="terminal-bar">
+            <div class="terminal-buttons">
+              <span class="t-btn red"></span>
+              <span class="t-btn yellow"></span>
+              <span class="t-btn green"></span>
+            </div>
+            <div class="terminal-title">aakash@sviet-ai-lab: ~ (Python 3.11.8)</div>
+            <div class="terminal-mode">LIVE_REPL</div>
+          </div>
+
+          <div class="terminal-output" id="terminal-screen">
+            <div class="t-line info">Aakash Kumar Terminal v2.6.4 [Build 2026-X]</div>
+            <div class="t-line info">Type 'help' to view available system instructions.</div>
+            <div class="t-line prompt-line">
+              <span class="t-user">aakash@portfolio</span>:<span class="t-path">~</span>$ <span class="t-cmd">python3 --version</span>
+            </div>
+            <div class="t-line response">Python 3.11.8 (main, Oct 2026) [GCC 11.2.0 with Neo4j & Scikit-Learn]</div>
+          </div>
+
+          <form id="terminal-form" class="terminal-input-row" autocomplete="off">
+            <span class="t-user">guest@portfolio</span>:<span class="t-path">~</span>$&nbsp;
+            <input type="text" id="terminal-input" class="terminal-input" placeholder="Type 'help' or 'chainscope'..." aria-label="Terminal command input">
+            <button type="submit" class="terminal-submit-btn">EXEC</button>
+          </form>
+          <div class="card-glare"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="section-container">
+        <div class="section-badge" data-aos="fade-up">07 // INITIATE TRANSMISSION</div>
+        <h2 class="section-title" data-aos="fade-up">Let's Build <span class="gradient-text">Something Extraordinary</span></h2>
+
+        <div class="contact-grid">
+          <div class="contact-info-card tilt-element" data-aos="fade-right">
+            <h3>Contact Channels</h3>
+            <p>
+              I am actively seeking internships, project collaborations, and AI/ML data engineering opportunities. 
+              Drop a message or reach out via LinkedIn/GitHub!
+            </p>
+
+            <div class="channel-list">
+              <a href="https://www.linkedin.com/in/aakash-kumar-0a457223b/" target="_blank" rel="noopener noreferrer" class="channel-item">
+                <div class="channel-icon linkedin">in</div>
+                <div class="channel-details">
+                  <span class="channel-title">LinkedIn</span>
+                  <span class="channel-value">linkedin.com/in/aakash-kumar-0a457223b</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/aakashkumar99347578-alt" target="_blank" rel="noopener noreferrer" class="channel-item">
+                <div class="channel-icon github">🐙</div>
+                <div class="channel-details">
+                  <span class="channel-title">GitHub</span>
+                  <span class="channel-value">github.com/aakashkumar99347578-alt</span>
+                </div>
+              </a>
+
+              <div class="channel-item">
+                <div class="channel-icon location">📍</div>
+                <div class="channel-details">
+                  <span class="channel-title">Location</span>
+                  <span class="channel-value">Punjab, India</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-pills-row">
+              <a href="https://github.com/aakashkumar99347578-alt" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <span>GitHub Repositories</span>
+              </a>
+              <a href="https://www.linkedin.com/in/aakash-kumar-0a457223b/" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <span>Connect on LinkedIn</span>
+              </a>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-card tilt-element" data-aos="fade-left">
+            <h3>Send a Direct Dispatch</h3>
+            <form id="contact-form" class="cyber-form">
+              <div class="form-group">
+                <label for="contact-name">Your Full Name</label>
+                <input type="text" id="contact-name" name="name" placeholder="Ada Lovelace" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">Email Address</label>
+                <input type="email" id="contact-email" name="email" placeholder="ada@innovate.org" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject">Topic / Opportunity</label>
+                <input type="text" id="contact-subject" name="subject" placeholder="AI Project Collaboration / Role" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message Details</label>
+                <textarea id="contact-message" name="message" rows="4" placeholder="Hello Aakash, I was impressed by ChainScope and your DevHack win..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn primary-3d-btn submit-btn" id="send-msg-btn">
+                <span class="btn-text">Transmit Message</span>
+                <span class="btn-arrow">⚡</span>
+              </button>
+            </form>
+            <div id="form-toast" class="form-toast hidden"></div>
+            <div class="card-glare"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="cyber-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-text">AAKASH KUMAR</span>
+          <span class="logo-bracket">/&gt;</span>
+          <p>B.Tech CSE Student • Python & Machine Learning • DevHack 2026 Winner</p>
+        </div>
+        <div class="footer-nav">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#achievements">Awards</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; 2026 Aakash Kumar. Engineered with WebGL 3D & Modern CSS.
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/aakashkumar99347578-alt" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/aakash-kumar-0a457223b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <button id="scroll-to-top" class="back-to-top" aria-label="Scroll back to top">↑ TOP</button>
+        </div>
+    </div>
+  </footer>
+  </div> <!-- /.portfolio-device-frame -->
+
+  <!-- RESUME MODAL VIEWER -->
+  <div class="modal-overlay" id="resume-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">📄</span>
+          <h3>Aakash Kumar — Curriculum Vitae</h3>
+        </div>
+        <div class="modal-actions">
+          <button id="print-cv-btn" class="modal-btn secondary">🖨️ Print / Save PDF</button>
+          <button id="close-resume-modal" class="modal-btn close-btn" aria-label="Close modal">✕</button>
+        </div>
+      </div>
+      <div class="modal-body printable-area" id="printable-cv">
+        <div class="cv-document">
+          <header class="cv-header">
+            <h1>Aakash Kumar</h1>
+            <div class="cv-tagline">B.Tech CSE Student | Python • Data Analytics • AI/ML</div>
+            <div class="cv-contact-row">
+              <span>📍 Punjab, India</span>
+              <span>🔗 <a href="https://www.linkedin.com/in/aakash-kumar-0a457223b/" target="_blank">linkedin.com/in/aakash-kumar-0a457223b</a></span>
+              <span>🐙 <a href="https://github.com/aakashkumar99347578-alt" target="_blank">github.com/aakashkumar99347578-alt</a></span>
+            </div>
+          </header>
+
+          <section class="cv-section">
+            <h4 class="cv-sec-title">PROFESSIONAL SUMMARY</h4>
+            <p>
+              Motivated B.Tech Computer Science student with a growing foundation in Python programming, data analytics, 
+              object-oriented programming, and AI/ML concepts. Experienced in leading student hackathon teams, coordinating tasks, 
+              presenting technical ideas, and contributing to community learning initiatives. Interested in building practical, 
+              data-driven software solutions and continuing to develop skills in analytics and machine learning.
+            </p>
+          </section>
+
+          <section class="cv-section">
+            <h4 class="cv-sec-title">EDUCATION</h4>
+            <div class="cv-item">
+              <div class="cv-row">
+                <strong>B.Tech, Computer Science & Engineering</strong>
+                <span>2025 – Present</span>
+              </div>
+              <div class="cv-row sub">
+                <span>Swami Vivekanand Institute of Engineering & Technology (SVIET), Punjab</span>
+                <em>Currently in 2nd year</em>
+              </div>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-row">
+                <strong>Class XII — State Board</strong>
+                <span>82%</span>
+              </div>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-row">
+                <strong>Class X — State Board</strong>
+                <span>84%</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="cv-section">
+            <h4 class="cv-sec-title">TECHNICAL SKILLS</h4>
+            <div class="cv-skill-table">
+              <div><strong>Programming:</strong> Python, C</div>
+              <div><strong>Python & Data:</strong> Object-Oriented Programming (OOP), NumPy, Pandas, Matplotlib</div>
+              <div><strong>Database & Tools:</strong> SQL/database fundamentals, Neo4j, Git, GitHub</div>
+              <div><strong>Areas of Interest:</strong> Data Analytics, Data Science, AI/ML, Software Development</div>
+            </div>
+          </section>
+
+          <section class="cv-section">
+            <h4 class="cv-sec-title">PROJECTS</h4>
+            <div class="cv-item">
+              <div class="cv-row">
+                <strong>ChainScope — Blockchain Transaction Risk Analysis (Hackathon Project)</strong>
+              </div>
+              <p>
+                Worked on a concept/prototype for evidence-based transaction tracing and risk identification. 
+                The proposed workflow uses Neo4j for multi-hop graph tracing (up to four hops), rule-based risk flags 
+                (including rapid movement and dormant-account revival), Random Forest-based behaviour classification, 
+                and live Ethereum/Bitcoin checks through Etherscan and Blockstream APIs.
+              </p>
+            </div>
+
+            <div class="cv-item">
+              <div class="cv-row">
+                <strong>ATM System — Python</strong>
+              </div>
+              <p>
+                Built a beginner-level console project to practise programming fundamentals, encapsulation, 
+                and implement common ATM-style transactional actions.
+              </p>
+            </div>
+          </section>
+
+          <section class="cv-section">
+            <h4 class="cv-sec-title">ACHIEVEMENTS & HACKATHONS</h4>
+            <ul class="cv-bullet-list">
+              <li><strong>Best AI Project Award</strong> — DevHack 2026, IIMT University, Meerut; Team Leader, NextGen Builders. Contributed to ideation, task distribution, team coordination, and project presentation; event had 1,150+ registrations. (Ref: DEVHACK64)</li>
+              <li><strong>Best Use of Teamwork Award</strong> — HyperHack 1.0, The Uniques Community.</li>
+              <li><strong>Top 30 Offline Round</strong> — HackPlus Hackathon, UEM Jaipur; selected from a competition with 1,220+ registrations.</li>
+              <li><strong>Top 10 Team</strong> — Punjab Mission Innovation (as reported by the team).</li>
+              <li><strong>Selected Team</strong> — Smart India Hackathon (SIH) 2026 internal hackathon; team RegenX.</li>
+            </ul>
+          </section>
+
+          <section class="cv-section">
+            <h4 class="cv-sec-title">LEADERSHIP & COMMUNITY</h4>
+            <ul class="cv-bullet-list">
+              <li><strong>Team Leader — NextGen Builders:</strong> Coordinated teammates, developed ideas, divided responsibilities, tracked progress, and represented the team during evaluation and presentation.</li>
+              <li><strong>Mentor — CODE CRUSADE 0.5:</strong> Supported a seven-day coding workshop through The Uniques Community.</li>
+              <li><strong>Volunteer — Bharat-Tech Xperience Hackathon:</strong> Contributed to event support and participant experience.</li>
+              <li><strong>Student Community & Campus Activities:</strong> Helped with workshops and student initiatives; created graphic designs and social-media content for college/community activities.</li>
+            </ul>
+          </section>
+
+          <section class="cv-section">
+            <h4 class="cv-sec-title">ADDITIONAL INFORMATION</h4>
+            <p>JEE Main 2025: 83.349 percentile. Credential reference: DevHack 2026 — DEVHACK64.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT ARCHITECTURE MODAL -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">🕸️</span>
+          <h3 id="modal-project-title">ChainScope // Architecture & Deep Trace</h3>
+        </div>
+        <button id="close-project-modal" class="modal-btn close-btn" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body" id="modal-project-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE CODE EXPLORER MODAL -->
+  <div class="modal-overlay" id="code-modal">
+    <div class="modal-container code-modal-container">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">💻</span>
+          <h3 id="code-modal-title">Live Source Code Inspector</h3>
+        </div>
+        <div class="modal-actions">
+          <button id="copy-code-btn" class="modal-btn secondary">📋 Copy Code</button>
+          <button id="close-code-modal" class="modal-btn close-btn" aria-label="Close modal">✕</button>
+        </div>
+      </div>
+      <div class="modal-body code-modal-body">
+        <div class="code-tabs-nav" id="code-tabs">
+          <!-- Injected via JavaScript -->
+        </div>
+        <div class="code-viewer-container">
+          <pre><code id="code-viewer-content" class="language-python"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="sound-effects.js"></script>
+  <script src="three-scene.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

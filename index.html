@@ -479,109 +479,43 @@
     <!-- PROJECTS SECTION -->
     <section class="section projects-section" id="projects">
       <div class="section-container">
-        <div class="section-badge" data-aos="fade-up">03 // FEATURED WORK</div>
-        <h2 class="section-title" data-aos="fade-up">Engineered for <span class="gradient-text">Real-World Impact</span></h2>
-        
+        <div class="section-badge" data-aos="fade-up">03 // FEATURED WORK & REPOSITORIES</div>
+        <h2 class="section-title" data-aos="fade-up">Engineered for <span class="gradient-text">Real-World Scale</span></h2>
+        <p class="section-subtitle" data-aos="fade-up">Production systems spanning AI Graph Analytics, Direct Fair-Trade Commerce, and Enterprise SQL Intelligence.</p>
+
+        <!-- Interactive Project Filter & Quick Launcher Bar -->
+        <div class="projects-filter-bar" data-aos="fade-up">
+          <button class="project-filter-btn active" data-filter="all" type="button">
+            <span>✨ All Projects (5)</span>
+          </button>
+          <button class="project-filter-btn" data-filter="artisan" type="button">
+            <span>🏛️ Artisan-AI</span>
+          </button>
+          <button class="project-filter-btn" data-filter="retail-sql" type="button">
+            <span>📊 Retail Sales SQL</span>
+          </button>
+          <button class="project-filter-btn" data-filter="zepto-sql" type="button">
+            <span>⚡ Zepto Quick-Commerce</span>
+          </button>
+          <button class="project-filter-btn" data-filter="bookstore-sql" type="button">
+            <span>📚 Bookstore Insights</span>
+          </button>
+          <button class="project-filter-btn" data-filter="chainscope" type="button">
+            <span>🏆 ChainScope</span>
+          </button>
+        </div>
+
         <div class="projects-grid">
-          <!-- Featured Project 1: ChainScope -->
-          <div class="project-card featured-project tilt-element" data-aos="fade-up">
-            <div class="project-header">
-              <div class="project-label">
-                <span class="award-tag">🏆 DEVHACK 2026 BEST AI PROJECT</span>
-              </div>
-              <div class="project-actions">
-                <button class="action-btn-pill view-code-btn" data-code="chainscope" title="View Source Code">
-                  <span>&lt;/&gt; View Code</span>
-                </button>
-                <button class="action-btn-pill highlight view-details-btn" data-project="chainscope" title="View Architecture Diagram">
-                  <span>📐 Architecture</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="project-body">
-              <h3 class="project-title">ChainScope</h3>
-              <div class="project-subtitle">Blockchain Transaction Risk Tracing & AI Anomaly Detection</div>
-              
-              <p class="project-description">
-                Engineered an evidence-based transaction tracing and multi-hop risk classification system.
-                Leverages Neo4j for deep graph link tracking (up to 4 hops), live Ethereum and Bitcoin validation 
-                via Etherscan and Blockstream APIs, and a Random Forest ensemble to detect dormant account revivals 
-                and rapid token laundering patterns.
-              </p>
-
-              <!-- Live Interactive 4-Hop Graph Simulator -->
-              <div class="interactive-preview-canvas" id="chainscope-preview">
-                <div class="canvas-header-row">
-                  <span class="canvas-badge">Interactive 4-Hop Risk Tracing Engine (Click nodes to inspect)</span>
-                  <span class="canvas-live-tag">LIVE_SIMULATOR</span>
-                </div>
-                <div class="node-graph-mockup">
-                  <div class="node origin active-node" data-node="origin">
-                    <span class="node-dot"></span>
-                    <div class="node-info">
-                      <strong>Target Wallet</strong>
-                      <small>0x71c...4e3a</small>
-                    </div>
-                  </div>
-                  <div class="hop-line line1"></div>
-                  <div class="node hop1" data-node="mixer">
-                    <span class="node-dot warning"></span>
-                    <div class="node-info">
-                      <strong>Hop 1: Mixer</strong>
-                      <small>Velocity 94.2%</small>
-                    </div>
-                  </div>
-                  <div class="hop-line line2"></div>
-                  <div class="node hop2" data-node="dormant">
-                    <span class="node-dot danger"></span>
-                    <div class="node-info">
-                      <strong>Hop 2: Revived</strong>
-                      <small>Dormant 420d</small>
-                    </div>
-                  </div>
-                  <div class="hop-line line3"></div>
-                  <div class="node hop3" data-node="exchange">
-                    <span class="node-dot clean"></span>
-                    <div class="node-info">
-                      <strong>Hop 3: Vault</strong>
-                      <small>CEX Pool</small>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Dynamic Node Inspection Panel -->
-                <div class="node-inspection-panel" id="node-inspector">
-                  <div class="inspect-row">
-                    <span class="inspect-label">Selected Node:</span>
-                    <span class="inspect-val" id="inspect-name">Target Wallet (Origin)</span>
-                    <span class="inspect-badge danger" id="inspect-risk">AI Risk Score: 0.94 [CRITICAL]</span>
-                  </div>
-                  <div class="inspect-desc" id="inspect-details">
-                    Ingested address linked with high velocity outbound tokens to unverified mixer contract.
-                  </div>
-                </div>
-              </div>
-
-              <div class="project-tech-stack">
-                <span class="tech-pill">Neo4j Multi-Hop</span>
-                <span class="tech-pill">Random Forest AI</span>
-                <span class="tech-pill">Etherscan API</span>
-                <span class="tech-pill">Blockstream API</span>
-                <span class="tech-pill">Python 3</span>
-                <span class="tech-pill">Pandas Dataframes</span>
-              </div>
-            </div>
-            <div class="card-glare"></div>
-          </div>
-
-          <!-- Featured Project 2: Artisan -->
-          <div class="project-card featured-project tilt-element" data-aos="fade-up" data-aos-delay="100">
+          <!-- Project 1: Artisan-AI -->
+          <div class="project-card featured-project tilt-element" data-project-type="artisan" data-aos="fade-up">
             <div class="project-header">
               <div class="project-label">
                 <span class="award-tag artisan-tag">🏛️ FAIR-TRADE CRAFT ECOSYSTEM // HERITAGE PROVENANCE</span>
               </div>
               <div class="project-actions">
+                <a href="https://github.com/aakashkumar99347578-alt/Artisan-Ai" target="_blank" rel="noopener noreferrer" class="action-btn-pill git-btn" title="Open Artisan-Ai on GitHub">
+                  <span>🐙 View on GitHub</span>
+                </a>
                 <button class="action-btn-pill view-code-btn" data-code="artisan" title="View Source Code">
                   <span>&lt;/&gt; View Code</span>
                 </button>
@@ -592,13 +526,13 @@
             </div>
 
             <div class="project-body">
-              <h3 class="project-title">Artisan</h3>
+              <h3 class="project-title">Artisan-AI</h3>
               <div class="project-subtitle">Direct Rural Craftsman Fair-Trade Marketplace & Authenticity Provenance</div>
               
               <p class="project-description">
-                Engineered a digital commerce and craft heritage ecosystem designed to empower rural and indigenous Indian artisans by eliminating exploitative middlemen.
+                Digital commerce and craft heritage ecosystem designed to empower rural and indigenous Indian artisans by eliminating exploitative middlemen.
                 Features an AI-driven fair pricing algorithm that computes dynamic selling benchmarks based on raw material costs, artisanal intricacy hours, and heritage indexes.
-                Includes verifiable digital provenance passports for Geographical Indication (GI) certified crafts like Madhubani art, Phulkari handlooms, and Terracotta pottery.
+                Includes verifiable digital provenance passports for Geographical Indication (GI) certified crafts.
               </p>
 
               <!-- Live Interactive Artisan Fair-Trade & Provenance Explorer -->
@@ -687,6 +621,427 @@
                 <span class="tech-pill">PostgreSQL / Supabase</span>
                 <span class="tech-pill">Direct Escrow Rails</span>
                 <span class="tech-pill">Multilingual Voice UI</span>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Project 2: Retail Sales SQL Project -->
+          <div class="project-card tilt-element" data-project-type="retail-sql" data-aos="fade-up">
+            <div class="project-header">
+              <div class="project-label">
+                <span class="award-tag">📊 SQL DATA ANALYTICS // SALES PIPELINE</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/aakashkumar99347578-alt/retail_sale_sql_project" target="_blank" rel="noopener noreferrer" class="action-btn-pill git-btn" title="Open retail_sale_sql_project on GitHub">
+                  <span>🐙 View on GitHub</span>
+                </a>
+                <button class="action-btn-pill view-code-btn" data-code="retail_sql" title="View SQL Script">
+                  <span>&lt;/&gt; View SQL</span>
+                </button>
+                <button class="action-btn-pill highlight view-details-btn" data-project="retail_sql" title="View Analytics Architecture">
+                  <span>📐 Pipeline</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">Retail Sales SQL Analytics</h3>
+              <div class="project-subtitle">Enterprise Retail Transactions, Customer Cohorts & Revenue Intelligence</div>
+              
+              <p class="project-description">
+                Comprehensive data analysis framework utilizing advanced PostgreSQL queries to unlock deep operational insights from retail transactional data.
+                Implements data cleaning, customer lifetime value (LTV) rankings, time-based shift analysis, and demographic cross-tabulation across age and category segments.
+              </p>
+
+              <!-- Interactive Live SQL Analytics Workbench -->
+              <div class="interactive-preview-canvas sql-workbench" id="retail-sql-workbench">
+                <div class="canvas-header-row">
+                  <span class="canvas-badge">Interactive SQL Query Workbench (Click query to execute)</span>
+                  <span class="canvas-live-tag">SQL_ANALYTICS</span>
+                </div>
+
+                <div class="sql-query-selector">
+                  <button class="sql-tab-chip active" data-query="top_customers" type="button">
+                    <span>🏆</span> Top 5 Customers by Revenue
+                  </button>
+                  <button class="sql-tab-chip" data-query="hourly_shifts" type="button">
+                    <span>🕒</span> Sales by Shift (Morning/Eve)
+                  </button>
+                  <button class="sql-tab-chip" data-query="category_demographics" type="button">
+                    <span>👥</span> Category & Demographics
+                  </button>
+                </div>
+
+                <div class="sql-query-display">
+                  <pre class="sql-code-box" id="retail-sql-code"><code>-- Top 5 Customers by Lifetime Spend
+SELECT 
+    customer_id,
+    COUNT(transactions_id) AS total_orders,
+    SUM(total_sale) AS total_spend
+FROM retail_sales
+GROUP BY customer_id
+ORDER BY total_spend DESC
+LIMIT 5;</code></pre>
+                </div>
+
+                <div class="sql-results-table-container">
+                  <div class="table-label-row">
+                    <span>Query Output (Live Simulated Result):</span>
+                    <span class="result-speed">Execution Time: 4.2ms &bull; Status: OK</span>
+                  </div>
+                  <table class="sql-results-table" id="retail-sql-table">
+                    <thead>
+                      <tr>
+                        <th>customer_id</th>
+                        <th>total_orders</th>
+                        <th>total_spend</th>
+                        <th>segment</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>CUST_1084</td>
+                        <td>42 orders</td>
+                        <td><strong style="color: #ff7043;">₹1,84,200</strong></td>
+                        <td><span class="status-pill vip">VIP / Platinum</span></td>
+                      </tr>
+                      <tr>
+                        <td>CUST_0921</td>
+                        <td>38 orders</td>
+                        <td><strong style="color: #ff7043;">₹1,56,800</strong></td>
+                        <td><span class="status-pill vip">VIP / Platinum</span></td>
+                      </tr>
+                      <tr>
+                        <td>CUST_1402</td>
+                        <td>31 orders</td>
+                        <td><strong style="color: #ff7043;">₹1,42,150</strong></td>
+                        <td><span class="status-pill high">High Value</span></td>
+                      </tr>
+                      <tr>
+                        <td>CUST_0633</td>
+                        <td>29 orders</td>
+                        <td><strong style="color: #ff7043;">₹1,28,900</strong></td>
+                        <td><span class="status-pill high">High Value</span></td>
+                      </tr>
+                      <tr>
+                        <td>CUST_1190</td>
+                        <td>27 orders</td>
+                        <td><strong style="color: #ff7043;">₹1,19,450</strong></td>
+                        <td><span class="status-pill high">High Value</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Window Functions</span>
+                <span class="tech-pill">CTEs (Common Table Expr)</span>
+                <span class="tech-pill">Cohort Analysis</span>
+                <span class="tech-pill">Revenue Modeling</span>
+                <span class="tech-pill">Data Normalization</span>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Project 3: Zepto Quick-Commerce SQL Project -->
+          <div class="project-card tilt-element" data-project-type="zepto-sql" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-header">
+              <div class="project-label">
+                <span class="award-tag">⚡ QUICK-COMMERCE // DARK STORE METRICS</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/aakashkumar99347578-alt/zepto_sql_project" target="_blank" rel="noopener noreferrer" class="action-btn-pill git-btn" title="Open zepto_sql_project on GitHub">
+                  <span>🐙 View on GitHub</span>
+                </a>
+                <button class="action-btn-pill view-code-btn" data-code="zepto_sql" title="View SQL Script">
+                  <span>&lt;/&gt; View SQL</span>
+                </button>
+                <button class="action-btn-pill highlight view-details-btn" data-project="zepto_sql" title="View Dark Store Architecture">
+                  <span>📐 SLA Matrix</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">Zepto Quick-Commerce SQL Intelligence</h3>
+              <div class="project-subtitle">10-Minute Dark Store Operations, Stockout Prediction & Delivery Analytics</div>
+              
+              <p class="project-description">
+                Engineered analytical queries simulating fast-paced quick-commerce micro-fulfillment centers (Dark Stores).
+                Measures 10-minute order SLA compliance across weather and traffic conditions, calculates high-velocity SKU inventory depletion rates,
+                and optimizes delivery rider allocation during morning and evening rush surges.
+              </p>
+
+              <!-- Interactive Zepto Quick-Commerce Console -->
+              <div class="interactive-preview-canvas sql-workbench" id="zepto-sql-workbench">
+                <div class="canvas-header-row">
+                  <span class="canvas-badge">Dark Store 10-Minute SLA & Dispatch Monitor</span>
+                  <span class="canvas-live-tag">QUICK_COMMERCE_KPI</span>
+                </div>
+
+                <div class="sql-query-selector">
+                  <button class="zepto-tab-chip active" data-metric="sla" type="button">
+                    <span>⏱️</span> 10-Min Delivery SLA
+                  </button>
+                  <button class="zepto-tab-chip" data-metric="stockout" type="button">
+                    <span>⚠️</span> SKU Stockout Alert
+                  </button>
+                  <button class="zepto-tab-chip" data-metric="rider" type="button">
+                    <span>🚴</span> Rider Dispatch Velocity
+                  </button>
+                </div>
+
+                <div class="zepto-kpi-grid" id="zepto-kpi-cards">
+                  <div class="zepto-kpi-card">
+                    <span class="kpi-label">Average Delivery Time</span>
+                    <strong class="kpi-val" style="color: #ff7043;" id="zepto-kpi-time">8 min 42 sec</strong>
+                    <small class="kpi-sub" style="color: #6ee7b7;">✓ Within 10-min SLA (96.4% compliance)</small>
+                  </div>
+                  <div class="zepto-kpi-card">
+                    <span class="kpi-label">Dark Store Throughput</span>
+                    <strong class="kpi-val" id="zepto-kpi-volume">4,820 orders/day</strong>
+                    <small class="kpi-sub">Peak Surge: 8 PM - 10:30 PM</small>
+                  </div>
+                  <div class="zepto-kpi-card">
+                    <span class="kpi-label">Fast-Moving Stock Health</span>
+                    <strong class="kpi-val" style="color: #fbbf24;" id="zepto-kpi-stock">99.1% In-Stock</strong>
+                    <small class="kpi-sub">Automated Reorder Trigger: &lt; 15 units</small>
+                  </div>
+                </div>
+
+                <div class="sql-query-display">
+                  <pre class="sql-code-box" id="zepto-sql-code"><code>-- 10-Minute SLA Compliance Check Across Dark Store Hubs
+SELECT 
+    hub_id,
+    hub_location,
+    ROUND(AVG(delivery_time_mins), 2) AS avg_delivery_time,
+    ROUND(SUM(CASE WHEN delivery_time_mins <= 10.0 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS sla_compliance_pct
+FROM zepto_orders
+GROUP BY hub_id, hub_location
+HAVING COUNT(*) > 100
+ORDER BY sla_compliance_pct DESC;</code></pre>
+                </div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-pill">SQL Aggregations</span>
+                <span class="tech-pill">Quick-Commerce SLA</span>
+                <span class="tech-pill">Dark Store Analytics</span>
+                <span class="tech-pill">Inventory Turnover</span>
+                <span class="tech-pill">Supply Chain Routing</span>
+                <span class="tech-pill">PostgreSQL / MySQL</span>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Project 4: SQL Bookstore Insights -->
+          <div class="project-card tilt-element" data-project-type="bookstore-sql" data-aos="fade-up">
+            <div class="project-header">
+              <div class="project-label">
+                <span class="award-tag">📚 RELATIONAL DATA WAREHOUSE // COMMERCE</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/aakashkumar99347578-alt/sql-bookstore-insights" target="_blank" rel="noopener noreferrer" class="action-btn-pill git-btn" title="Open sql-bookstore-insights on GitHub">
+                  <span>🐙 View on GitHub</span>
+                </a>
+                <button class="action-btn-pill view-code-btn" data-code="bookstore_sql" title="View SQL Script">
+                  <span>&lt;/&gt; View SQL</span>
+                </button>
+                <button class="action-btn-pill highlight view-details-btn" data-project="bookstore_sql" title="View ERD & Schema">
+                  <span>📐 Relational Schema</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">SQL Bookstore Insights & Royalty Engine</h3>
+              <div class="project-subtitle">Relational Book Sales Intelligence, Author Royalties & Inventory Triggers</div>
+              
+              <p class="project-description">
+                Normalized multi-table relational database architecture modeling publishing logistics, book sales transactions, customer acquisition channels, and author royalty payout engines.
+                Demonstrates nested joins, transactional integrity, customer lifetime valuation, and real-time stock replenishment triggers.
+              </p>
+
+              <!-- Interactive Bookstore Intelligence Console -->
+              <div class="interactive-preview-canvas sql-workbench" id="bookstore-sql-workbench">
+                <div class="canvas-header-row">
+                  <span class="canvas-badge">Relational Bookstore Analytics & Royalty Splitter</span>
+                  <span class="canvas-live-tag">LIVE_QUERY</span>
+                </div>
+
+                <div class="sql-query-selector">
+                  <button class="bookstore-tab-chip active" data-bquery="royalties" type="button">
+                    <span>🖋️</span> Author Royalty Payouts
+                  </button>
+                  <button class="bookstore-tab-chip" data-bquery="genres" type="button">
+                    <span>📈</span> High-Grossing Genres
+                  </button>
+                  <button class="bookstore-tab-chip" data-bquery="reorder" type="button">
+                    <span>📦</span> Low Stock Alerts
+                  </button>
+                </div>
+
+                <div class="sql-query-display">
+                  <pre class="sql-code-box" id="bookstore-sql-code"><code>-- Author Royalty Calculation (15% Royalty Split on Gross Sales)
+SELECT 
+    b.author_name,
+    COUNT(o.order_id) AS units_sold,
+    SUM(o.quantity * b.unit_price) AS gross_sales,
+    ROUND(SUM(o.quantity * b.unit_price) * 0.15, 2) AS author_net_royalty
+FROM books b
+JOIN order_items o ON b.book_id = o.book_id
+GROUP BY b.author_name
+ORDER BY gross_sales DESC
+LIMIT 4;</code></pre>
+                </div>
+
+                <div class="sql-results-table-container">
+                  <table class="sql-results-table" id="bookstore-sql-table">
+                    <thead>
+                      <tr>
+                        <th>author_name</th>
+                        <th>units_sold</th>
+                        <th>gross_sales</th>
+                        <th>author_net_royalty</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Amish Tripathi</td>
+                        <td>1,240 units</td>
+                        <td>₹6,20,000</td>
+                        <td><strong style="color: #ff7043;">₹93,000</strong></td>
+                      </tr>
+                      <tr>
+                        <td>Arundhati Roy</td>
+                        <td>980 units</td>
+                        <td>₹4,90,000</td>
+                        <td><strong style="color: #ff7043;">₹73,500</strong></td>
+                      </tr>
+                      <tr>
+                        <td>Ruskin Bond</td>
+                        <td>840 units</td>
+                        <td>₹3,36,000</td>
+                        <td><strong style="color: #ff7043;">₹50,400</strong></td>
+                      </tr>
+                      <tr>
+                        <td>Chetan Bhagat</td>
+                        <td>790 units</td>
+                        <td>₹2,37,000</td>
+                        <td><strong style="color: #ff7043;">₹35,550</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-pill">Relational Schema</span>
+                <span class="tech-pill">Multi-Table JOINs</span>
+                <span class="tech-pill">Author Royalty Engine</span>
+                <span class="tech-pill">Inventory Reorder Triggers</span>
+                <span class="tech-pill">Financial Aggregates</span>
+                <span class="tech-pill">SQL Views & Stored Procs</span>
+              </div>
+            </div>
+            <div class="card-glare"></div>
+          </div>
+
+          <!-- Project 5: ChainScope -->
+          <div class="project-card featured-project tilt-element" data-project-type="chainscope" data-aos="fade-up">
+            <div class="project-header">
+              <div class="project-label">
+                <span class="award-tag">🏆 DEVHACK 2026 BEST AI PROJECT</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/aakashkumar99347578-alt" target="_blank" rel="noopener noreferrer" class="action-btn-pill git-btn" title="Open GitHub Profile">
+                  <span>🐙 View on GitHub</span>
+                </a>
+                <button class="action-btn-pill view-code-btn" data-code="chainscope" title="View Source Code">
+                  <span>&lt;/&gt; View Code</span>
+                </button>
+                <button class="action-btn-pill highlight view-details-btn" data-project="chainscope" title="View Architecture Diagram">
+                  <span>📐 Architecture</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <h3 class="project-title">ChainScope</h3>
+              <div class="project-subtitle">Blockchain Transaction Risk Tracing & AI Anomaly Detection</div>
+              
+              <p class="project-description">
+                Evidence-based transaction tracing and multi-hop risk classification system.
+                Leverages Neo4j for deep graph link tracking (up to 4 hops), live Ethereum and Bitcoin validation 
+                via Etherscan and Blockstream APIs, and a Random Forest ensemble to detect dormant account revivals 
+                and rapid token laundering patterns.
+              </p>
+
+              <!-- Live Interactive 4-Hop Graph Simulator -->
+              <div class="interactive-preview-canvas" id="chainscope-preview">
+                <div class="canvas-header-row">
+                  <span class="canvas-badge">Interactive 4-Hop Risk Tracing Engine (Click nodes to inspect)</span>
+                  <span class="canvas-live-tag">LIVE_SIMULATOR</span>
+                </div>
+                <div class="node-graph-mockup">
+                  <div class="node origin active-node" data-node="origin">
+                    <span class="node-dot"></span>
+                    <div class="node-info">
+                      <strong>Target Wallet</strong>
+                      <small>0x71c...4e3a</small>
+                    </div>
+                  </div>
+                  <div class="hop-line line1"></div>
+                  <div class="node hop1" data-node="mixer">
+                    <span class="node-dot warning"></span>
+                    <div class="node-info">
+                      <strong>Hop 1: Mixer</strong>
+                      <small>Velocity 94.2%</small>
+                    </div>
+                  </div>
+                  <div class="hop-line line2"></div>
+                  <div class="node hop2" data-node="dormant">
+                    <span class="node-dot danger"></span>
+                    <div class="node-info">
+                      <strong>Hop 2: Revived</strong>
+                      <small>Dormant 420d</small>
+                    </div>
+                  </div>
+                  <div class="hop-line line3"></div>
+                  <div class="node hop3" data-node="exchange">
+                    <span class="node-dot clean"></span>
+                    <div class="node-info">
+                      <strong>Hop 3: Vault</strong>
+                      <small>CEX Pool</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Dynamic Node Inspection Panel -->
+                <div class="node-inspection-panel" id="node-inspector">
+                  <div class="inspect-row">
+                    <span class="inspect-label">Selected Node:</span>
+                    <span class="inspect-val" id="inspect-name">Target Wallet (Origin)</span>
+                    <span class="inspect-badge danger" id="inspect-risk">AI Risk Score: 0.94 [CRITICAL]</span>
+                  </div>
+                  <div class="inspect-desc" id="inspect-details">
+                    Ingested address linked with high velocity outbound tokens to unverified mixer contract.
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-pill">Neo4j Multi-Hop</span>
+                <span class="tech-pill">Random Forest AI</span>
+                <span class="tech-pill">Etherscan API</span>
+                <span class="tech-pill">Blockstream API</span>
+                <span class="tech-pill">Python 3</span>
+                <span class="tech-pill">Pandas Dataframes</span>
               </div>
             </div>
             <div class="card-glare"></div>

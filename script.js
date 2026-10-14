@@ -473,6 +473,119 @@ document.addEventListener('DOMContentLoaded', () => {
           artisan_guaranteed_share = fair_price * 0.78 &nbsp;<span style="color: #10b981;">// Enforced smart escrow threshold</span>
         </div>
       </div>
+    `,
+
+    retail_sql: `
+      <div class="project-modal-content">
+        <h3 style="color: #ff7043; font-family: var(--font-heading); margin-bottom: 0.5rem;">Retail Sales SQL Analytics // Pipeline Architecture</h3>
+        <p style="color: #cbd5e1; margin-bottom: 1.5rem; line-height: 1.6;">
+          Engineered on PostgreSQL to perform high-throughput analytics across large-scale retail transaction ledgers.
+          Eliminates data quality bottlenecks with automated sanitization pipelines and models customer retention cohorts using window functions.
+        </p>
+
+        <h4 style="color: #ff5722; margin-bottom: 0.8rem; font-family: var(--font-mono);">Analytical Pillars:</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #ff7043; display: block; margin-bottom: 4px;">1. Customer Lifetime Value (LTV)</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Aggregates frequency and monetary metrics (RFM) to isolate high-yield VIP spenders from churn cohorts.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #fbbf24; display: block; margin-bottom: 4px;">2. Hourly Shift Velocity Engine</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Extracts transaction timestamp intervals into Morning, Afternoon, and Evening buckets to optimize store staffing.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">3. Demographic & Age Segmentation</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Cross-tabulates product category margins with customer age profiles to steer high-margin inventory ordering.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #10b981; display: block; margin-bottom: 4px;">4. Zero-Loss Data Sanitization</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Isolates NULL price records, enforces NOT NULL schema integrity, and validates primary transaction IDs.</span>
+          </div>
+        </div>
+
+        <div style="background: #060911; border: 1px solid rgba(255,87,34,0.35); padding: 1rem; border-radius: 10px; font-family: var(--font-mono); font-size: 0.85rem; color: #fed7aa;">
+          <span style="color: #64748b;">-- Shift Aggregation CTE Query</span><br>
+          WITH hourly_shifts AS (<br>
+          &nbsp;&nbsp;SELECT *, CASE WHEN EXTRACT(HOUR FROM sale_time) &lt; 12 THEN 'Morning' ELSE 'Evening' END AS shift<br>
+          &nbsp;&nbsp;FROM retail_sales<br>
+          )<br>
+          SELECT shift, COUNT(*), SUM(total_sale) FROM hourly_shifts GROUP BY shift;
+        </div>
+      </div>
+    `,
+
+    zepto_sql: `
+      <div class="project-modal-content">
+        <h3 style="color: #ff7043; font-family: var(--font-heading); margin-bottom: 0.5rem;">Zepto Quick-Commerce SQL Intelligence // Dark Store SLA</h3>
+        <p style="color: #cbd5e1; margin-bottom: 1.5rem; line-height: 1.6;">
+          Models high-frequency 10-minute micro-fulfillment operations across dense urban delivery radii.
+          Monitors minute-by-minute dispatch bottlenecks, fast-moving SKU stockouts, and weather-adjusted delivery rider allocations.
+        </p>
+
+        <h4 style="color: #ff5722; margin-bottom: 0.8rem; font-family: var(--font-mono);">Operational Pillars:</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #ff7043; display: block; margin-bottom: 4px;">1. 10-Minute SLA Adherence Matrix</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Tracks fulfillment intervals: picker picking time (2 mins), packing (1 min), and rider transit time (7 mins).</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #fbbf24; display: block; margin-bottom: 4px;">2. Automated SKU Depletion Triggers</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Calculates burn rate for milk, fresh produce, and beverages to trigger automated mother-warehouse replenishment.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">3. Rider Dispatch Optimization</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Monitors rider idle periods, batch delivery possibilities within 500m geofences, and peak evening incentives.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #10b981; display: block; margin-bottom: 4px;">4. Micro-Hub Capacity Balancing</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Identifies saturated dark stores and re-routes marginal orders to neighboring hubs with spare capacity.</span>
+          </div>
+        </div>
+
+        <div style="background: #060911; border: 1px solid rgba(255,87,34,0.35); padding: 1rem; border-radius: 10px; font-family: var(--font-mono); font-size: 0.85rem; color: #fed7aa;">
+          <span style="color: #64748b;">-- Dark Store Stockout Hazard Score</span><br>
+          SELECT sku_id, current_stock, hourly_burn_rate,<br>
+          &nbsp;&nbsp;ROUND(current_stock / NULLIF(hourly_burn_rate, 0), 2) AS hours_left<br>
+          FROM darkstore_inventory WHERE current_stock &lt; 20 ORDER BY hours_left ASC;
+        </div>
+      </div>
+    `,
+
+    bookstore_sql: `
+      <div class="project-modal-content">
+        <h3 style="color: #ff7043; font-family: var(--font-heading); margin-bottom: 0.5rem;">SQL Bookstore Insights & Royalty Engine // Relational Architecture</h3>
+        <p style="color: #cbd5e1; margin-bottom: 1.5rem; line-height: 1.6;">
+          Complete relational database modeling commercial publishing operations, multi-author royalty contracts,
+          customer ordering behavior, and warehouse replenishment schedules with strict transactional ACID guarantees.
+        </p>
+
+        <h4 style="color: #ff5722; margin-bottom: 0.8rem; font-family: var(--font-mono);">Relational Architecture Pillars:</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #ff7043; display: block; margin-bottom: 4px;">1. 3NF Normalized Schema</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Clean relational layout spanning Books, Authors, Customers, Orders, and Order_Items with foreign key constraints.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #fbbf24; display: block; margin-bottom: 4px;">2. Automated Royalty Settlement</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Computes author royalty shares dynamically based on contractual tiers and gross sales after return deductions.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #38bdf8; display: block; margin-bottom: 4px;">3. Stock Reorder Triggers</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Automated query filters pinpointing titles whose inventory has dropped below critical safety margins.</span>
+          </div>
+          <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+            <strong style="color: #10b981; display: block; margin-bottom: 4px;">4. Genre Margin Analysis</strong>
+            <span style="color: #94a3b8; font-size: 0.88rem;">Evaluates reader acquisition costs against high-grossing categories like Indian Mythology and Literary Fiction.</span>
+          </div>
+        </div>
+
+        <div style="background: #060911; border: 1px solid rgba(255,87,34,0.35); padding: 1rem; border-radius: 10px; font-family: var(--font-mono); font-size: 0.85rem; color: #fed7aa;">
+          <span style="color: #64748b;">-- Relational Royalty Join</span><br>
+          SELECT b.author_name, SUM(o.quantity * b.unit_price) * 0.15 AS royalty_inr<br>
+          FROM books b JOIN order_items o ON b.book_id = o.book_id<br>
+          GROUP BY b.author_name;
+        </div>
+      </div>
     `
   };
 
@@ -963,6 +1076,251 @@ export class IdeaJamStore {
 }
 `
       }
+    },
+
+    retail_sql: {
+      title: "Retail Sales SQL Analytics // PostgreSQL Query Suite",
+      tabs: [
+        { name: "retail_sales_analysis.sql", lang: "sql" },
+        { name: "schema_ddl.sql", lang: "sql" }
+      ],
+      code: {
+        "retail_sales_analysis.sql": `-- ========================================================
+-- RETAIL SALES SQL ANALYTICS & REVENUE INTELLIGENCE
+-- Author: Aakash Kumar
+-- Repository: https://github.com/aakashkumar99347578-alt/retail_sale_sql_project
+-- Database: PostgreSQL
+-- ========================================================
+
+-- 1. DATA CLEANING: Remove Records with Null Critical Values
+DELETE FROM retail_sales
+WHERE 
+    transactions_id IS NULL OR
+    sale_date IS NULL OR
+    customer_id IS NULL OR
+    gender IS NULL OR
+    category IS NULL OR
+    quantiy IS NULL OR
+    price_per_unit IS NULL OR
+    cogs IS NULL OR
+    total_sale IS NULL;
+
+-- 2. CORE KPI: Total Revenue, Distinct Orders & Customer Reach
+SELECT 
+    COUNT(DISTINCT transactions_id) AS total_orders,
+    COUNT(DISTINCT customer_id) AS total_unique_customers,
+    ROUND(SUM(total_sale), 2) AS gross_revenue,
+    ROUND(AVG(total_sale), 2) AS avg_order_value
+FROM retail_sales;
+
+-- 3. CUSTOMER LIFETIME VALUE: Top 5 Highest Spenders
+SELECT 
+    customer_id,
+    COUNT(transactions_id) AS total_orders,
+    SUM(total_sale) AS total_spend,
+    ROUND(AVG(total_sale), 2) AS avg_spend_per_visit
+FROM retail_sales
+GROUP BY customer_id
+ORDER BY total_spend DESC
+LIMIT 5;
+
+-- 4. TEMPORAL SHIFT ANALYSIS: Hourly Order Velocity
+WITH hourly_sales AS (
+    SELECT *,
+        CASE 
+            WHEN EXTRACT(HOUR FROM sale_time) < 12 THEN 'Morning'
+            WHEN EXTRACT(HOUR FROM sale_time) BETWEEN 12 AND 17 THEN 'Afternoon'
+            ELSE 'Evening'
+        END AS shift
+    FROM retail_sales
+)
+SELECT 
+    shift,
+    COUNT(*) AS total_transactions,
+    ROUND(SUM(total_sale), 2) AS shift_revenue
+FROM hourly_sales
+GROUP BY shift
+ORDER BY shift_revenue DESC;
+
+-- 5. DEMOGRAPHIC SEGMENTATION: Product Category by Gender & Age
+SELECT 
+    category,
+    gender,
+    ROUND(AVG(age), 1) AS avg_customer_age,
+    SUM(quantiy) AS total_units_sold,
+    ROUND(SUM(total_sale), 2) AS category_revenue
+FROM retail_sales
+GROUP BY category, gender
+ORDER BY category, category_revenue DESC;
+`,
+        "schema_ddl.sql": `-- Database Schema for Retail Sales Data Analytics
+CREATE TABLE IF NOT EXISTS retail_sales (
+    transactions_id INT PRIMARY KEY,
+    sale_date DATE NOT NULL,
+    sale_time TIME NOT NULL,
+    customer_id INT NOT NULL,
+    gender VARCHAR(15),
+    age INT,
+    category VARCHAR(35) NOT NULL,
+    quantiy INT NOT NULL CHECK (quantiy > 0),
+    price_per_unit NUMERIC(10, 2) NOT NULL,
+    cogs NUMERIC(10, 2) NOT NULL,
+    total_sale NUMERIC(10, 2) NOT NULL
+);
+
+-- Indexing for Query Acceleration
+CREATE INDEX idx_retail_customer ON retail_sales(customer_id);
+CREATE INDEX idx_retail_sale_date ON retail_sales(sale_date);
+CREATE INDEX idx_retail_category ON retail_sales(category);
+`
+      }
+    },
+
+    zepto_sql: {
+      title: "Zepto Quick-Commerce SQL // 10-Minute Dark Store SLA Analytics",
+      tabs: [
+        { name: "darkstore_sla_metrics.sql", lang: "sql" },
+        { name: "inventory_depletion.sql", lang: "sql" }
+      ],
+      code: {
+        "darkstore_sla_metrics.sql": `-- ========================================================
+-- ZEPTO QUICK-COMMERCE SQL INTELLIGENCE & DARK STORE ANALYTICS
+-- Author: Aakash Kumar
+-- Repository: https://github.com/aakashkumar99347578-alt/zepto_sql_project
+-- Focus: 10-Minute SLA Adherence, Dispatch Speed & Dark Store Throughput
+-- ========================================================
+
+-- 1. 10-MINUTE DELIVERY SLA COMPLIANCE BY DARK STORE HUB
+SELECT 
+    hub_id,
+    hub_location,
+    COUNT(order_id) AS total_orders_handled,
+    ROUND(AVG(delivery_time_mins), 2) AS avg_delivery_time,
+    ROUND(
+        SUM(CASE WHEN delivery_time_mins <= 10.0 THEN 1 ELSE 0 END) * 100.0 / COUNT(*),
+        2
+    ) AS sla_compliance_pct,
+    ROUND(
+        SUM(CASE WHEN delivery_time_mins > 15.0 THEN 1 ELSE 0 END) * 100.0 / COUNT(*),
+        2
+    ) AS critical_delay_pct
+FROM zepto_orders
+GROUP BY hub_id, hub_location
+HAVING COUNT(order_id) >= 100
+ORDER BY sla_compliance_pct DESC;
+
+-- 2. PEAK SURGE RIDER ALLOCATION & HOURLY LOAD
+SELECT 
+    EXTRACT(HOUR FROM order_timestamp) AS order_hour,
+    COUNT(*) AS total_hourly_orders,
+    ROUND(AVG(rider_wait_time_secs) / 60.0, 2) AS avg_rider_wait_mins,
+    ROUND(AVG(delivery_time_mins), 2) AS avg_delivery_mins
+FROM zepto_orders
+GROUP BY EXTRACT(HOUR FROM order_timestamp)
+ORDER BY total_hourly_orders DESC;
+`,
+        "inventory_depletion.sql": `-- High-Velocity SKU Depletion & Automated Reorder Alert
+SELECT 
+    sku_id,
+    product_name,
+    category,
+    current_inventory,
+    hourly_consumption_rate,
+    ROUND(current_inventory / NULLIF(hourly_consumption_rate, 0), 1) AS hours_until_depletion,
+    CASE 
+        WHEN current_inventory <= 10 THEN 'CRITICAL_STOCKOUT_RISK'
+        WHEN current_inventory <= 25 THEN 'REORDER_NOW'
+        ELSE 'HEALTHY'
+    END AS inventory_health_status
+FROM darkstore_sku_inventory
+WHERE current_inventory < 30
+ORDER BY hours_until_depletion ASC;
+`
+      }
+    },
+
+    bookstore_sql: {
+      title: "SQL Bookstore Insights // Relational Warehouse & Author Royalty Splitter",
+      tabs: [
+        { name: "author_royalties.sql", lang: "sql" },
+        { name: "bookstore_schema.sql", lang: "sql" }
+      ],
+      code: {
+        "author_royalties.sql": `-- ========================================================
+-- SQL BOOKSTORE INSIGHTS & AUTHOR ROYALTY CALCULATION
+-- Author: Aakash Kumar
+-- Repository: https://github.com/aakashkumar99347578-alt/sql-bookstore-insights
+-- Focus: Multi-Table Joins, 15% Contractual Royalty Splits & Reorders
+-- ========================================================
+
+-- 1. AUTHOR ROYALTY SETTLEMENT LEDGER (15% Contractual Royalty)
+SELECT 
+    b.author_name,
+    COUNT(DISTINCT b.book_id) AS distinct_titles,
+    SUM(o.quantity) AS total_copies_sold,
+    ROUND(SUM(o.quantity * b.unit_price), 2) AS gross_sales_inr,
+    ROUND(SUM(o.quantity * b.unit_price) * 0.15, 2) AS author_net_royalty_payout
+FROM books b
+JOIN order_items o ON b.book_id = o.book_id
+GROUP BY b.author_name
+ORDER BY gross_sales_inr DESC;
+
+-- 2. TOP PERFORMING GENRES & AVERAGE BOOK PRICE
+SELECT 
+    genre,
+    COUNT(book_id) AS available_titles,
+    ROUND(AVG(unit_price), 2) AS avg_price,
+    SUM(stock_quantity) AS current_warehouse_stock
+FROM books
+GROUP BY genre
+ORDER BY available_titles DESC;
+
+-- 3. INVENTORY REORDER TRIGGERS (Stock <= Reorder Threshold)
+SELECT 
+    book_id,
+    title,
+    author_name,
+    stock_quantity,
+    reorder_level,
+    (reorder_level - stock_quantity + 20) AS recommended_restock_units
+FROM books
+WHERE stock_quantity <= reorder_level
+ORDER BY stock_quantity ASC;
+`,
+        "bookstore_schema.sql": `-- Relational Normalized Schema for Bookstore Intelligence
+CREATE TABLE authors (
+    author_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    royalty_pct NUMERIC(4,2) DEFAULT 15.00
+);
+
+CREATE TABLE books (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author_id INT REFERENCES authors(author_id),
+    author_name VARCHAR(100),
+    genre VARCHAR(50),
+    unit_price NUMERIC(8,2) NOT NULL,
+    stock_quantity INT DEFAULT 0,
+    reorder_level INT DEFAULT 15
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount NUMERIC(10,2)
+);
+
+CREATE TABLE order_items (
+    order_item_id INT PRIMARY KEY,
+    order_id INT REFERENCES orders(order_id),
+    book_id INT REFERENCES books(book_id),
+    quantity INT NOT NULL,
+    price_at_sale NUMERIC(8,2) NOT NULL
+);
+`
+      }
     }
   };
 
@@ -1378,7 +1736,337 @@ export class IdeaJamStore {
   }
 
   // ==========================================
-  // 11. SCROLL TO TOP BUTTON
+  // PROJECTS FILTER & QUICK LAUNCHER BAR
+  // ==========================================
+  const projectFilterBtns = document.querySelectorAll('.project-filter-btn');
+  const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+  if (projectFilterBtns.length > 0) {
+    projectFilterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        projectFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach((card) => {
+          const type = card.getAttribute('data-project-type');
+          if (filter === 'all' || type === filter) {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 30);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 250);
+          }
+        });
+
+        if (window.soundFX && window.soundFX.playClick) {
+          window.soundFX.playClick();
+        }
+      });
+    });
+  }
+
+  // ==========================================
+  // RETAIL SALES SQL INTERACTIVE WORKBENCH
+  // ==========================================
+  const retailSqlChips = document.querySelectorAll('.sql-tab-chip');
+  const retailSqlCode = document.getElementById('retail-sql-code');
+  const retailSqlTable = document.getElementById('retail-sql-table');
+
+  const retailQueries = {
+    top_customers: {
+      code: `-- Top 5 Customers by Lifetime Spend
+SELECT 
+    customer_id,
+    COUNT(transactions_id) AS total_orders,
+    SUM(total_sale) AS total_spend
+FROM retail_sales
+GROUP BY customer_id
+ORDER BY total_spend DESC
+LIMIT 5;`,
+      headers: ['customer_id', 'total_orders', 'total_spend', 'segment'],
+      rows: [
+        ['CUST_1084', '42 orders', '<strong style="color: #ff7043;">₹1,84,200</strong>', '<span class="status-pill vip">VIP / Platinum</span>'],
+        ['CUST_0921', '38 orders', '<strong style="color: #ff7043;">₹1,56,800</strong>', '<span class="status-pill vip">VIP / Platinum</span>'],
+        ['CUST_1402', '31 orders', '<strong style="color: #ff7043;">₹1,42,150</strong>', '<span class="status-pill high">High Value</span>'],
+        ['CUST_0633', '29 orders', '<strong style="color: #ff7043;">₹1,28,900</strong>', '<span class="status-pill high">High Value</span>'],
+        ['CUST_1190', '27 orders', '<strong style="color: #ff7043;">₹1,19,450</strong>', '<span class="status-pill high">High Value</span>']
+      ]
+    },
+    hourly_shifts: {
+      code: `-- Hourly Shift Velocity & Peak Sales Traffic
+WITH hourly_sales AS (
+    SELECT *,
+        CASE 
+            WHEN EXTRACT(HOUR FROM sale_time) < 12 THEN 'Morning Shift (08:00 - 12:00)'
+            WHEN EXTRACT(HOUR FROM sale_time) BETWEEN 12 AND 17 THEN 'Afternoon Shift (12:00 - 17:00)'
+            ELSE 'Evening Peak (17:00 - 22:00)'
+        END AS shift_name
+    FROM retail_sales
+)
+SELECT 
+    shift_name,
+    COUNT(*) AS total_transactions,
+    ROUND(SUM(total_sale), 2) AS total_revenue
+FROM hourly_shifts
+GROUP BY shift_name
+ORDER BY total_revenue DESC;`,
+      headers: ['shift_name', 'total_transactions', 'total_revenue', 'velocity_share'],
+      rows: [
+        ['Evening Peak (17:00 - 22:00)', '1,420 orders', '<strong style="color: #ff7043;">₹8,42,100</strong>', '<span class="status-pill vip">54.2% Peak Surge</span>'],
+        ['Afternoon Shift (12:00 - 17:00)', '890 orders', '<strong style="color: #ff7043;">₹4,78,350</strong>', '<span class="status-pill high">30.8% Steady</span>'],
+        ['Morning Shift (08:00 - 12:00)', '430 orders', '<strong style="color: #ff7043;">₹2,32,900</strong>', '<span class="status-pill">15.0% Moderate</span>']
+      ]
+    },
+    category_demographics: {
+      code: `-- Category Profitability & Age Demographics
+SELECT 
+    category,
+    gender,
+    ROUND(AVG(age), 1) AS avg_customer_age,
+    SUM(quantiy) AS units_sold,
+    ROUND(SUM(total_sale), 2) AS category_revenue
+FROM retail_sales
+GROUP BY category, gender
+ORDER BY category_revenue DESC;`,
+      headers: ['category', 'gender', 'avg_customer_age', 'category_revenue'],
+      rows: [
+        ['Electronics & Tech', 'Male', '28.4 yrs', '<strong style="color: #ff7043;">₹12,85,000</strong>'],
+        ['Fashion & Apparel', 'Female', '26.1 yrs', '<strong style="color: #ff7043;">₹7,64,200</strong>'],
+        ['Beauty & Personal Care', 'Female', '24.8 yrs', '<strong style="color: #ff7043;">₹5,12,800</strong>'],
+        ['Home & Lifestyle', 'Male', '34.2 yrs', '<strong style="color: #ff7043;">₹3,94,500</strong>']
+      ]
+    }
+  };
+
+  if (retailSqlChips.length > 0 && retailSqlCode && retailSqlTable) {
+    retailSqlChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        retailSqlChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const key = chip.getAttribute('data-query');
+        const q = retailQueries[key];
+        if (!q) return;
+
+        retailSqlCode.innerHTML = `<code>${escapeHTML(q.code)}</code>`;
+
+        let headerHtml = '<tr>' + q.headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+        let bodyHtml = q.rows.map(row => '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>').join('');
+
+        retailSqlTable.innerHTML = `<thead>${headerHtml}</thead><tbody>${bodyHtml}</tbody>`;
+
+        if (window.soundFX && window.soundFX.playClick) {
+          window.soundFX.playClick();
+        }
+      });
+    });
+  }
+
+  // ==========================================
+  // ZEPTO QUICK-COMMERCE CONSOLE
+  // ==========================================
+  const zeptoChips = document.querySelectorAll('.zepto-tab-chip');
+  const zeptoTime = document.getElementById('zepto-kpi-time');
+  const zeptoVolume = document.getElementById('zepto-kpi-volume');
+  const zeptoStock = document.getElementById('zepto-kpi-stock');
+  const zeptoSqlCode = document.getElementById('zepto-sql-code');
+
+  const zeptoMetrics = {
+    sla: {
+      time: "8 min 42 sec",
+      timeSub: "✓ Within 10-min SLA (96.4% compliance)",
+      timeColor: "#ff7043",
+      volume: "4,820 orders/day",
+      volumeSub: "Peak Surge: 8 PM - 10:30 PM",
+      stock: "99.1% In-Stock",
+      stockSub: "Automated Reorder Trigger: < 15 units",
+      stockColor: "#fbbf24",
+      code: `-- 10-Minute SLA Compliance Check Across Dark Store Hubs
+SELECT 
+    hub_id,
+    hub_location,
+    ROUND(AVG(delivery_time_mins), 2) AS avg_delivery_time,
+    ROUND(SUM(CASE WHEN delivery_time_mins <= 10.0 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS sla_compliance_pct
+FROM zepto_orders
+GROUP BY hub_id, hub_location
+HAVING COUNT(*) > 100
+ORDER BY sla_compliance_pct DESC;`
+    },
+    stockout: {
+      time: "14 Critical SKUs",
+      timeSub: "⚠️ Lead Time: 24 mins to warehouse replenish",
+      timeColor: "#ef4444",
+      volume: "18.4 units/hr",
+      volumeSub: "Highest Burn: Amul Gold Milk & Bread",
+      stock: "94.2% In-Stock",
+      stockSub: "Reorder Trigger Active for 6 Hubs",
+      stockColor: "#f59e0b",
+      code: `-- High-Velocity SKU Depletion & Immediate Reorder Trigger
+SELECT 
+    sku_id,
+    product_name,
+    current_inventory,
+    hourly_consumption_rate,
+    ROUND(current_inventory / NULLIF(hourly_consumption_rate, 0), 1) AS hours_left
+FROM darkstore_sku_inventory
+WHERE current_inventory <= 20
+ORDER BY hours_left ASC;`
+    },
+    rider: {
+      time: "142 Active Riders",
+      timeSub: "✓ 98.8% Rider Utilization Rate",
+      timeColor: "#10b981",
+      volume: "6.2 min Transit",
+      volumeSub: "Avg 3.2 km Round-Trip Radius",
+      stock: "₹18 Surge Bonus",
+      stockSub: "Rain & Peak Traffic Incentive Active",
+      stockColor: "#ff7043",
+      code: `-- Rider Dispatch Velocity & Geofence Efficiency
+SELECT 
+    rider_id,
+    COUNT(order_id) AS total_deliveries,
+    ROUND(AVG(transit_time_mins), 2) AS avg_transit_mins,
+    ROUND(SUM(distance_km), 2) AS total_km_covered
+FROM rider_trip_logs
+WHERE trip_date = CURRENT_DATE
+GROUP BY rider_id
+ORDER BY total_deliveries DESC
+LIMIT 5;`
+    }
+  };
+
+  if (zeptoChips.length > 0 && zeptoTime && zeptoVolume && zeptoStock && zeptoSqlCode) {
+    zeptoChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        zeptoChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const key = chip.getAttribute('data-metric');
+        const m = zeptoMetrics[key];
+        if (!m) return;
+
+        zeptoTime.textContent = m.time;
+        zeptoTime.style.color = m.timeColor;
+        const sub1 = zeptoTime.parentElement.querySelector('.kpi-sub');
+        if (sub1) sub1.textContent = m.timeSub;
+
+        zeptoVolume.textContent = m.volume;
+        const sub2 = zeptoVolume.parentElement.querySelector('.kpi-sub');
+        if (sub2) sub2.textContent = m.volumeSub;
+
+        zeptoStock.textContent = m.stock;
+        zeptoStock.style.color = m.stockColor;
+        const sub3 = zeptoStock.parentElement.querySelector('.kpi-sub');
+        if (sub3) sub3.textContent = m.stockSub;
+
+        zeptoSqlCode.innerHTML = `<code>${escapeHTML(m.code)}</code>`;
+
+        if (window.soundFX && window.soundFX.playClick) {
+          window.soundFX.playClick();
+        }
+      });
+    });
+  }
+
+  // ==========================================
+  // BOOKSTORE SQL CONSOLE
+  // ==========================================
+  const bookstoreChips = document.querySelectorAll('.bookstore-tab-chip');
+  const bookstoreSqlCode = document.getElementById('bookstore-sql-code');
+  const bookstoreSqlTable = document.getElementById('bookstore-sql-table');
+
+  const bookstoreQueries = {
+    royalties: {
+      code: `-- Author Royalty Calculation (15% Royalty Split on Gross Sales)
+SELECT 
+    b.author_name,
+    COUNT(o.order_id) AS units_sold,
+    SUM(o.quantity * b.unit_price) AS gross_sales,
+    ROUND(SUM(o.quantity * b.unit_price) * 0.15, 2) AS author_net_royalty
+FROM books b
+JOIN order_items o ON b.book_id = o.book_id
+GROUP BY b.author_name
+ORDER BY gross_sales DESC
+LIMIT 4;`,
+      headers: ['author_name', 'units_sold', 'gross_sales', 'author_net_royalty'],
+      rows: [
+        ['Amish Tripathi', '1,240 units', '₹6,20,000', '<strong style="color: #ff7043;">₹93,000</strong>'],
+        ['Arundhati Roy', '980 units', '₹4,90,000', '<strong style="color: #ff7043;">₹73,500</strong>'],
+        ['Ruskin Bond', '840 units', '₹3,36,000', '<strong style="color: #ff7043;">₹50,400</strong>']
+      ]
+    },
+    genres: {
+      code: `-- Top Performing Genres & Margin Analysis
+SELECT 
+    b.genre,
+    COUNT(DISTINCT b.book_id) AS title_count,
+    SUM(o.quantity) AS total_copies_sold,
+    ROUND(SUM(o.quantity * b.unit_price), 2) AS gross_genre_revenue
+FROM books b
+JOIN order_items o ON b.book_id = o.book_id
+GROUP BY b.genre
+ORDER BY gross_genre_revenue DESC;`,
+      headers: ['genre', 'title_count', 'total_copies_sold', 'gross_genre_revenue'],
+      rows: [
+        ['Indian Mythology & Epics', '48 titles', '8,420 copies', '<strong style="color: #ff7043;">₹33,68,000</strong>'],
+        ['Literary Fiction & Drama', '32 titles', '5,140 copies', '<strong style="color: #ff7043;">₹25,70,000</strong>'],
+        ['Non-Fiction & History', '24 titles', '4,210 copies', '<strong style="color: #ff7043;">₹18,94,500</strong>']
+      ]
+    },
+    reorder: {
+      code: `-- Inventory Reorder Triggers (Stock below Reorder Threshold)
+SELECT 
+    book_id,
+    title,
+    author_name,
+    stock_quantity,
+    reorder_level
+FROM books
+WHERE stock_quantity <= reorder_level
+ORDER BY stock_quantity ASC;`,
+      headers: ['book_id', 'title', 'stock_quantity', 'reorder_status'],
+      rows: [
+        ['BK-108', 'The Immortals of Meluha', '<span style="color:#ef4444; font-weight:700;">3 units</span>', '<span class="status-pill" style="border-color:#ef4444; color:#ef4444;">🚨 REORDER NOW</span>'],
+        ['BK-244', 'The God of Small Things', '<span style="color:#f59e0b; font-weight:700;">7 units</span>', '<span class="status-pill" style="border-color:#f59e0b; color:#f59e0b;">⚠️ LOW STOCK</span>'],
+        ['BK-319', 'The Room on the Roof', '<span style="color:#f59e0b; font-weight:700;">11 units</span>', '<span class="status-pill" style="border-color:#f59e0b; color:#f59e0b;">⚠️ LOW STOCK</span>']
+      ]
+    }
+  };
+
+  if (bookstoreChips.length > 0 && bookstoreSqlCode && bookstoreSqlTable) {
+    bookstoreChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        bookstoreChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const key = chip.getAttribute('data-bquery');
+        const q = bookstoreQueries[key];
+        if (!q) return;
+
+        bookstoreSqlCode.innerHTML = `<code>${escapeHTML(q.code)}</code>`;
+
+        let headerHtml = '<tr>' + q.headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+        let bodyHtml = q.rows.map(row => '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>').join('');
+
+        bookstoreSqlTable.innerHTML = `<thead>${headerHtml}</thead><tbody>${bodyHtml}</tbody>`;
+
+        if (window.soundFX && window.soundFX.playClick) {
+          window.soundFX.playClick();
+        }
+      });
+    });
+  }
+
+  // ==========================================
+  // SCROLL TO TOP BUTTON
   // ==========================================
   const scrollToTopBtn = document.getElementById('scroll-to-top');
   if (scrollToTopBtn) {

@@ -1144,8 +1144,217 @@ body.cursor-hover .cursor-outline {
 }
 
 /* ==========================================================
-   PROJECTS SECTION
+   PROJECTS SECTION & GITHUB REPOSITORIES
    ========================================================== */
+.projects-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.2rem;
+  align-items: center;
+}
+
+.project-filter-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-filter-btn:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 87, 34, 0.4);
+  background: rgba(255, 87, 34, 0.08);
+  transform: translateY(-2px);
+}
+
+.project-filter-btn.active {
+  background: rgba(255, 87, 34, 0.18);
+  border-color: var(--accent-orange);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 87, 34, 0.3);
+}
+
+.action-btn-pill.git-btn {
+  background: rgba(255, 87, 34, 0.12);
+  border-color: rgba(255, 87, 34, 0.38);
+  color: #ffab91;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.action-btn-pill.git-btn:hover {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(255, 87, 34, 0.45);
+  transform: translateY(-2px);
+}
+
+/* SQL Workbench & Analytics Consoles */
+.sql-workbench {
+  background: rgba(14, 15, 22, 0.85);
+  border: 1px solid rgba(255, 87, 34, 0.28);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sql-query-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.sql-tab-chip, .zepto-tab-chip, .bookstore-tab-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sql-tab-chip:hover, .zepto-tab-chip:hover, .bookstore-tab-chip:hover {
+  background: rgba(255, 87, 34, 0.12);
+  border-color: rgba(255, 87, 34, 0.4);
+  color: #ffab91;
+}
+
+.sql-tab-chip.active, .zepto-tab-chip.active, .bookstore-tab-chip.active {
+  background: linear-gradient(135deg, rgba(255, 87, 34, 0.3), rgba(249, 115, 22, 0.2));
+  border-color: var(--accent-orange);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 87, 34, 0.25);
+  font-weight: 600;
+}
+
+.sql-code-box {
+  background: #090a10;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #fed7aa;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.sql-results-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.table-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.result-speed {
+  color: #6ee7b7;
+}
+
+.sql-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: #0c0d14;
+}
+
+.sql-results-table th {
+  background: rgba(255, 87, 34, 0.08);
+  color: var(--accent-orange);
+  text-align: left;
+  padding: 8px 12px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 87, 34, 0.2);
+}
+
+.sql-results-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+}
+
+.status-pill {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.status-pill.vip {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fde047;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.status-pill.high {
+  background: rgba(255, 87, 34, 0.15);
+  color: #ffab91;
+  border: 1px solid rgba(255, 87, 34, 0.35);
+}
+
+/* Zepto KPI Grid */
+.zepto-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.zepto-kpi-card {
+  background: #090a10;
+  border: 1px solid rgba(255, 87, 34, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.zepto-kpi-card .kpi-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.zepto-kpi-card .kpi-val {
+  font-size: 1.15rem;
+  color: #fff;
+  font-family: var(--font-heading);
+  margin: 2px 0;
+}
+
+.zepto-kpi-card .kpi-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
